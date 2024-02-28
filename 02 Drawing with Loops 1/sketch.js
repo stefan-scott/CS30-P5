@@ -7,9 +7,19 @@
 let xPos, yPos;   //declaration only...
 
 function setup() {
-  createCanvas(400 , 300);
-  xPos = [width*0.05, width*0.95,width*0.05,width*0.95];
-  yPos = [height*0.05,height*0.05,height*0.95,height*0.95];
+  createCanvas(400 , 600);
+  xPos = [];  yPos = [];
+  initWithLoops(); //comment out for the on-your-own challenge
+  // xPos = [width*0.05, width*0.95,width*0.05,width*0.95];
+  // yPos = [height*0.05,height*0.05,height*0.95,height*0.95];
+}
+
+function initWithLoops(){
+  //lay down some initial circles, but using loops to do so.
+  for(let x = 10; x<width; x+=20){
+    xPos.push(x); 
+    yPos.push(height/2);
+  }
 }
 
 function draw() {
