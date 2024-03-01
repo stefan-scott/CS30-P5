@@ -4,7 +4,8 @@
 // Creating a gradient + drawing with nested loops
 
 let rectHeight = 10;
-let spacing = 20;
+let circleSize = 20;
+let spacing = 25;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -19,9 +20,12 @@ function draw() {
 function nestedLoops(){
   // using a loop within a loop, generate a grid arrangement
   // for some circles
-  for(let x = 0; x < 100; x+=spacing){ //0 20 40 60 80
-    for(let y = 0; y< 100; y+=spacing){ //0 20 40 60 80
-      circle(x, y, 10);
+  for(let x = 0; x < width; x+=spacing){ //COLUMN 0 20 40 60 80
+    for(let y = 0; y< height; y+=spacing){ //ROWS 0 20 40 60 80
+      fill(0);
+      circle(x, y, circleSize);
+      fill(255);
+      text(10, x, y);
     }
   }
 }
