@@ -7,6 +7,7 @@
 //global variables
 let x, y, rWidth, rHeight;
 let rLeft, rRight, rTop, rBottom;
+let pickedUp = false;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -45,7 +46,24 @@ function drawRectangle(){
     fill(255);
   }
 
+  //check if the rectangle has been "picked up"
+  if(pickedUp){
+    x = mouseX;
+    y = mouseY;
+  }
+
   rect(x,y,rWidth,rHeight);
+}
+
+function mousePressed(){
+  //triggers exactly once per click (on the mouse down)
+  if(inRectangle()){
+    pickedUp = true;
+  }
+}
+
+function mouseReleased(){
+  pickedUp = false;
 }
 
 function draw() {
