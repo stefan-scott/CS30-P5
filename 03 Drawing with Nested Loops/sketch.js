@@ -22,7 +22,7 @@ function mousePressed() {
 }
 
 function draw() {   //OVER AND OVER, 60 fps
-
+  //keep this tidy
 }
 
 function circleDistance(x1, y1, x2, y2) {
