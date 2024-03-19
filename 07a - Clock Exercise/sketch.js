@@ -13,13 +13,28 @@ function setup() {
 function draw() {
   background(220);
   drawStaticClock();
-  //drawClockHands();
+  drawClockHands();
 }
+
+function drawClockHands(){
+  //seconds hand first:
+  push();
+  stroke(200,0,0);
+  strokeWeight(1);
+  rotate(second()*6);
+  line(0,0,0,130);
+  pop();
+  //minutes hand second:
+
+  //hour hand third:
+}
+
 
 function drawStaticClock(){
   // Using basic transformations, draw 
   // an analog clock face
   // main circle first:
+  stroke(0);
   translate(width/2, height/2);
   push(); //new coordinate system
   circle(0,0,300);
@@ -39,5 +54,5 @@ function drawStaticClock(){
     rotate(angle);
     count++;
   }
-  
+  pop();
 }
