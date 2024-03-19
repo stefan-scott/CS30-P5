@@ -22,7 +22,7 @@ function drawClockHands(){
   stroke(200,0,0);
   strokeWeight(1);
   rotate(second()*6);
-  line(0,0,0,130);
+  line(0,0,0,-130);
   pop();
   //minutes hand second:
 
