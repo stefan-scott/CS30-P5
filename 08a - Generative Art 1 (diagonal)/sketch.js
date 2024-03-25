@@ -1,6 +1,6 @@
 // Generative Art 1: Diagonal Lines
 
-let gridSpacing = 40;
+let gridSpacing = 20;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -10,7 +10,10 @@ function setup() {
 }
 
 function draw() {
-  
+  randomSeed(100000000000);
+  gridSpacing = map(mouseX,0, width, 60, 10);
+  background(220);
+  drawLines();
 }
 
 function diagonalAsc(x, y, s){
@@ -22,7 +25,6 @@ function diagonalAsc(x, y, s){
 function diagonalDesc(x,y,s){
   line(x + s/2, y + s/2, x - s/2, y - s/2);
 }
-
 
 function drawLines(){
   //create diagonal lines on a grid
@@ -37,5 +39,4 @@ function drawLines(){
       }
     }
   }
-
 }
