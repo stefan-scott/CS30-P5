@@ -88,6 +88,7 @@ class MovingPoint{
     this.yTime += this.timeShift;
 
     this.y += ySpeed;
+    
     //add some wrap-around code
     if(this.x < 0) this.x = width;
     else if (this.x > width) this.x = 0;
