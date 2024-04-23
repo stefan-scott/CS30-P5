@@ -23,12 +23,13 @@ function draw() {
   }
   //loop by index
   for (let i = 0; i < particles.length; i++) {
+    //0   1  2  3  4  5  6  
     let p = particles[i];
     p.move();
     p.display();
     //check for removal?
     if(p.alive===false){   //time to delete at position i
-      particles.splice(i,1);
+      particles.splice(i,1); //deletes at position, #items to del
       i--; //backtrack i so as not to skip any items
     }
 
