@@ -3,22 +3,47 @@
 // April 23, 2024
 
 let grid =
-[ [0,     50,  100,  150,   200],
-  [0,      0,    0,    0,   0],
-  [30,    40,   50,   60,  70],
-  [255,  255,  255,  255, 255]
+[ [0,    255,    0,  255,   0],
+  [0,      0,  255,    0,   0],
+  [0,    255,  255,    0,  255],
+  [255,  255,    0,  255,  255]
 ];
 
 let squareSize = 50;
 const NUM_ROWS = 4; const NUM_COLS = 5;
+
+let row, col;
 
 function setup() {
   createCanvas(NUM_COLS * squareSize, NUM_ROWS * squareSize);
 }
 
 function draw() {
+  col = getCurrentX();
+  row = getCurrentY();  print(col, row);
   background(220);
   drawGrid();
+}
+
+function mousePressed(){
+  flip(col, row);
+}
+
+function flip(x,y){
+  if(grid[y][x]===0) grid[y][x]=255;
+  else grid[y][x] = 0;
+}
+
+function getCurrentY(){
+  //determine current row of mouse, and return
+  let constrainY = constrain(mouseY, 0, height-1);
+  return int(constrainY/squareSize);
+}
+
+function getCurrentX(){
+  //determine the current column of the mouse, and return
+  let constrainX = constrain(mouseX, 0, width-1);
+  return int(constrainX/squareSize);
 }
 
 function drawGrid(){
