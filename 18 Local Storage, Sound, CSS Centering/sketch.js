@@ -5,6 +5,7 @@
 let music, bounceSound;
 let started = false;
 let pos; let vel;
+let totalBounces = 0;
 
 function preload(){
   //function waits for loading...
@@ -18,6 +19,12 @@ function setup() {
   vel = createVector(5,3);
   textSize(30);
   textAlign(CENTER);
+  if(localStorage.getItem("bounce")===null){
+    localStorage.setItem("bounce", 0);
+  }
+  else{
+    totalBounces = int(localStorage.getItem("bounce"));
+  }
 }
 
 
@@ -33,6 +40,7 @@ function draw() {
   }
   else{  //time to run the program...
     updateBall();
+    text(totalBounces, width/2, height/2);
   }
 }
 
@@ -40,12 +48,16 @@ function updateBall(){
   pos.add(vel);
   bounceSound.setVolume(0.9);
   if(pos.x < 0 || pos.x > width){
+    totalBounces++;
     bounceSound.play();
     vel.x *= -1;
+    localStorage.setItem("bounce", totalBounces);
   } 
   if(pos.y < 0 || pos.y > height){
+    totalBounces++;
     bounceSound.play();
     vel.y *= -1;
+    localStorage.setItem("bounce", totalBounces);
   }
   circle(pos.x, pos.y, 20);
 }
