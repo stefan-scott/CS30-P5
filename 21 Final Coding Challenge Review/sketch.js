@@ -20,12 +20,12 @@ function preload(){ //to ensure loading is done
 
   //Gorialla IDLE images
   for(let i = 1; i <= 6; i++){ //1, 2, 3, 4, 5, 6
-    gorillaIdle.push(loadImage("idle" + i + ".png"));
+    gorillaIdle.push(loadImage("assets/Gorilla/idle" + i + ".png"));
   }
 
   //Gorialla SWIPE images
   for(let i = 1; i <= 6; i++){ //1, 2, 3, 4, 5, 6
-    goriallaSwipe.push(loadImage("swipe" + i + ".png"));
+    goriallaSwipe.push(loadImage("assets/Gorilla/swipe" + i + ".png"));
   }
 }
 
