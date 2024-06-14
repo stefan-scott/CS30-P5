@@ -5,7 +5,7 @@ let goriallaSwipe = [];
 let spiralImages = [];
 
 // Global Variables...
-
+let spirals = []; //to hold spiral objects
 
 function preload(){ //to ensure loading is done
   //Spirals 00-09   10-15
@@ -35,5 +35,32 @@ function setup() {
 }
 
 function draw() {
- 
+   //draw Spirals
+   for(let s of spirals)
 }
+
+function mousePressed(){
+  spirals.push(new Spiral(mouseX, mouseY));
+}
+
+class Spiral { //frames 0 - 15    ..16
+  construtor(x,y){ //happens once, for each object created
+    this.pos = createVector(x,y);
+    this.currentFrame = 0;
+    this.active = true;  //for deletion purposes
+  }
+
+  //class methods
+  display(){
+    if (this.currentFrame > 15){
+      this.active = false;
+    }
+    else{
+      image(spiralImages[this.currentFrame],this.pos.x, this.pos.y);
+      if(frameCount % 3 === 0){
+        this.currentFrame++;
+      }
+    }
+  }
+}
+
