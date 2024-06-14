@@ -36,7 +36,10 @@ function setup() {
 
 function draw() {
    //draw Spirals
-   for(let s of spirals)
+   for(let i = 0; i < spirals.length; i++){
+     let s = spirals[i];
+     s.display();
+   }
 }
 
 function mousePressed(){
@@ -44,7 +47,7 @@ function mousePressed(){
 }
 
 class Spiral { //frames 0 - 15    ..16
-  construtor(x,y){ //happens once, for each object created
+  constructor(x,y){ //happens once, for each object created
     this.pos = createVector(x,y);
     this.currentFrame = 0;
     this.active = true;  //for deletion purposes
