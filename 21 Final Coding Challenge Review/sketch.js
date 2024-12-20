@@ -1,7 +1,7 @@
 // Final Coding Challenge Review
 
 let gorillaIdle = [];
-let goriallaSwipe = [];
+let gorillaSwipe = [];
 let spiralImages = [];
 
 // Global Variables...
@@ -25,7 +25,7 @@ function preload(){ //to ensure loading is done
 
   //Gorialla SWIPE images
   for(let i = 1; i <= 6; i++){ //1, 2, 3, 4, 5, 6
-    goriallaSwipe.push(loadImage("assets/Gorilla/swipe" + i + ".png"));
+    gorillaSwipe.push(loadImage("assets/Gorilla/swipe" + i + ".png"));
   }
 }
 
@@ -33,12 +33,43 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   
 }
+//a couple more globals (should be at the top)
+let currentState = 0;  //0 -idle  //1 - swipe
+let idleIndex = 0;  let swipeIndex = 0;
+
+function keyPressed(){
+  if(currentState === 0) currentState = 1;
+  else currentState = 0;
+}
 
 function draw() {
-   //draw Spirals
-   for(let i = 0; i < spirals.length; i++){
+  background(0);
+   
+  //Gorialla Code
+  if(currentState === 0){
+    image(gorillaIdle[idleIndex], width/2, height/2);
+    if(frameCount % 8 === 0){
+      idleIndex++;
+      if(idleIndex > 5) idleIndex = 0;
+    }
+  }
+
+  if(currentState === 1){
+    image(gorillaSwipe[swipeIndex], width/2, height/2);
+    if(frameCount % 8 === 0){
+      swipeIndex++;
+      if(swipeIndex > 5) swipeIndex = 0;
+    }
+  }
+  
+  
+  //draw Spirals
+   for(let i = 0; i < spirals.length; i++){  //0, 1, 2, 3, 4..., 
      let s = spirals[i];
      s.display();
+     if(s.active===false){
+      spirals.splice(i,1);
+     }
    }
 }
 
